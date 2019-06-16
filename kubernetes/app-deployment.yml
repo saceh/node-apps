@@ -1,0 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: facebook-autocampaign
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: facebook-autocampaign  
+    spec:
+      containers:
+      - name: facebook-autocampaign
+        image: caribemedia.azurecr.io/facebook/facebook-autocampaign:1.0.12
+        env:
+        - name: PORT
+          value: 8000
+        - name: APPLICATION_NAME
+          value: Facebook Autocapaign API
+        - name: APPLICATION_VERSION
+          value: v1
+        - name: FACEBOOK_API_ADS_URL
+          value: https://graph.facebook.com/v3.0/
+        - name: SEQ_LOGGER_URL
+          value: http://archbackend:5341
+        - name: FACEBOOK_API_ADS_TOKEN
+          valueFrom:
+            secretKeyRef:
+              key: token
+              name: facebook-ads-api-token
+        ports:
+        - containerPort: 8000

@@ -38,9 +38,9 @@ pipeline {
         }
       }
     }
-    stage('Remove Unused docker image') {
+    stage('Kubernetes Setup'){
       steps{
-        sh "docker rmi $registry:$BUILD_NUMBER"
+        sh "kubectl get nodes -v=8"
       }
     }
   }
