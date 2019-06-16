@@ -1,0 +1,17 @@
+{
+ "name": "node-app",
+ "description": "Astro assessment ci/cd pipeline",
+ "main": "server.js",
+ "version": "0.0.1",
+ "private": true,
+ "dependencies": {
+    "express": "4.17.1",
+    "request": "^2.65.0"
+ },
+ "devDependencies": {
+    "mocha": "6.0.0"
+ },
+ "scripts": {
+    "test": "mocha"
+ }
+}
